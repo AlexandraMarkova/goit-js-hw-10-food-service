@@ -5,10 +5,9 @@ const Theme = {
 
 const checkboxRef = document.querySelector('.theme-switch__toggle');
 
- checkboxRef.addEventListener('change', onBodyLite);
+checkboxRef.addEventListener('change', onBodyTheme);
 
-function onBodyLite(event) {
-   
+function onBodyTheme() {
   document.body.classList.toggle(Theme.DARK);
   
   if (document.body.classList.contains(Theme.DARK)) {
@@ -16,12 +15,14 @@ function onBodyLite(event) {
   } else localStorage.removeItem('theme');
  }
 
-const localTheme = localStorage.getItem('theme');
+getLocalTheme();
+function getLocalTheme() {
+  const localTheme = localStorage.getItem('theme');
 
-if (localTheme) { 
-   onBodyLite();
-  checkboxRef.checked = true;
+  if (localTheme) {
+    onBodyTheme();
+    checkboxRef.checked = true;
+  }
 }
-
 
 
